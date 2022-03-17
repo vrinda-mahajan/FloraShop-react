@@ -1,0 +1,14 @@
+.best-seller-section {
+    margin-top: 6rem;
+}
+.best-seller-text{
+    text-align: center;
+    padding-bottom: 5rem;
+}
+.best-seller-cards {
+    justify-content: center;
+    flex-wrap: wrap;
+}
+.best-seller-icon {
+    margin-left: auto;
+}
