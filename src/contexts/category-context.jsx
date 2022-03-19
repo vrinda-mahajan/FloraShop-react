@@ -1,18 +1,12 @@
 import { createContext, useEffect, useReducer, useContext } from "react";
 import axios from "axios";
+import { categoryReducer } from "../reducers/category-reducer";
 
 const CategoryContext = createContext();
 
 const CategoryProvider = ({children}) => {
-    const reducer = (categories,action) => {
-        switch (action.type) {
-            case "SET_CATEGORIES":
-                return [...action.payload]
-            default:
-                return categories
-        }
-    }
-    const [categories,dispatch] = useReducer(reducer,[])
+    
+    const [categories,dispatch] = useReducer(categoryReducer,[])
     useEffect(()=>{
         axios.get("/api/categories")
             .then((response)=>{
