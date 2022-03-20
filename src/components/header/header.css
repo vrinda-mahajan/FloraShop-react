@@ -1,0 +1,26 @@
+.main {
+    position: relative;
+    margin-top: 4rem;
+}
+.header-img {
+    height: 40rem;
+}
+.main-text {
+    position: absolute;
+    width: 35%;
+    margin-top: 6rem;
+    margin-left: 4rem;
+}
+.main-heading {
+    font-size: 5.4rem;
+    font-family: 'Cormorant Garamond', serif;
+    padding-bottom: 0.6rem;
+}
+.main-text p {
+    padding-bottom:4rem ;
+}
+.main-btn{
+    margin-top: 2rem;
+    padding: 1rem 3rem;
+    font-size: 1.8rem;
+}

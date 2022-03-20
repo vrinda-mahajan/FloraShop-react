@@ -1,0 +1,23 @@
+.featured-text {
+    text-align: center;
+    margin: 5rem 0;
+}
+.featured-products >div {
+    position: relative;
+    margin: 3rem;
+}
+.featured-img {
+    height: 25rem;
+    width: 50rem;
+    opacity: 0.6;
+    border-radius: 5px;
+}
+.featured-overlay {
+    position: absolute;
+    top: 2rem;
+    left: 3rem;
+    color: var(--black-color);
+}
+.btn-featured {
+    margin: 1rem 0;
+}

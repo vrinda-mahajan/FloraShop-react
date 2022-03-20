@@ -1,0 +1,23 @@
+
+@media screen and (max-width : 786px) {
+    html {
+        font-size: 55%;
+    }
+    .nav-link {
+        display: none;
+    }
+}
+@media screen and (max-width : 480px) {
+    html {
+        font-size: 40%;
+    }
+    .nav-icon-text {
+        display: none;
+    }
+    .main-text >p {
+        display: none;
+    }
+    .main-text >h4 {
+        display: none;
+    }
+}
