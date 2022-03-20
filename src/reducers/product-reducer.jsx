@@ -25,7 +25,6 @@ export const productReducer = (state,action) => {
             }
 
         case "SORT_BY_CATEGORY":
-            console.log(action.payload)
             switch (action.payload) {
                 case "Plants":
                     return {...state,category:{...state.category,Plants:!state.category.Plants}}

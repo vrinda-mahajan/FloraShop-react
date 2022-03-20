@@ -34,21 +34,21 @@ const FilterSidebar = () => {
 
         <h6 className="filter-heading">Category</h6>
         <form>
-            {categories.map(({categoryName})=>
-                <>
-                <input onClick={()=>dispatch({type:"SORT_BY_CATEGORY",payload:categoryName})} checked={category[categoryName]} id={categoryName} type="checkbox"/>
+            {categories.map(({_id,categoryName})=>
+                <div key={_id}>
+                <input onChange={()=>dispatch({type:"SORT_BY_CATEGORY",payload:categoryName})} checked={category[categoryName]} id={categoryName} type="checkbox"/>
                 <label htmlFor={categoryName}>{categoryName}</label><br/>
-                </>
+                </div>
             )}
         </form>
 
         <h6 className="filter-heading">Rating</h6>
         <form>
             {ratingNumbers.map((num)=> 
-            <>
+            <div key={num}>
                 <input onChange={()=>dispatch({type:"SORT_BY_RATING",payload:num})} checked={rating===num?true:false} id={`${num}stars`} type="radio" name="rating"/>
                 <label htmlFor={`${num}stars`}>{num} Stars & above</label><br/>
-            </>)}
+            </div>)}
         </form>
 
         <h6 className="filter-heading">Sort by</h6>
