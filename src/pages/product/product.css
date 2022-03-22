@@ -78,3 +78,6 @@ form {
     box-shadow: none;
     margin: 2rem 0;
 }
+.card-vertical-container2 {
+    max-height: 40rem;
+}

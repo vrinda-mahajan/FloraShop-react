@@ -48,7 +48,9 @@ export const CartCard = ({cartItem}) => {
                             authorization:encodedToken
                     }}
                     )
+                if (response.status===200){
                 dispatch({type:"CHANGE_QTY",payload:response.data.cart})
+                }
             } catch (error) {
                 console.log(error)
             }
@@ -85,7 +87,8 @@ export const CartCard = ({cartItem}) => {
                     <p>{productDesc}</p>
                         <div className="align-center">
                             <h6>Quantity :</h6>
-                            <button disabled={qty<=1} onClick={()=>setQuantity(_id,"Decrement")} className="cart-card-btn"><i className="fas fa-minus"></i></button>
+                            {qty===1?<></>:
+                            <button onClick={()=>setQuantity(_id,"Decrement")} className="cart-card-btn"><i className="fas fa-minus"></i></button>}
                             <span className="product-quantity">{qty}</span>
                             <button onClick={()=>setQuantity(_id,"Increment")} className="cart-card-btn"><i className="fas fa-plus"></i></button>
                         </div>
