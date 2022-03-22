@@ -1,6 +1,58 @@
+import axios from "axios";
+import { useProduct } from "../../../contexts/product-context";
 
 const ProductCard = ({productDetails}) => {
-    const {img,title,inStock,rating,price,productDesc} = productDetails;
+    const {cart,wishlist,dispatch} = useProduct()
+    const encodedToken = localStorage.getItem("token");
+    const {_id,img,title,inStock,rating,price,productDesc} = productDetails;
+
+    const addToCart = async(productDetails) => {
+        try {
+            const response = await axios.post(
+                "/api/user/cart",
+                {product:productDetails},
+                {
+                    headers:{
+                        authorization:encodedToken
+                    }
+                })
+            dispatch({type:"ADD_TO_CART",payload:response.data.cart})
+        } catch (error) {
+            console.error(error)
+        }
+    }
+    const addToWishlist = async(productDetails) => {
+        try{
+            const response = await axios.post(
+                "/api/user/wishlist",
+                {product:productDetails},
+                {
+                    headers:{
+                    authorization:encodedToken
+                    },
+            })
+            dispatch({type:"ADD_TO_WISHLIST",payload:response.data.wishlist})
+        }
+        catch (error) {
+            console.error(error);
+        }
+    }
+
+    const removeFromWishlist = async(_id) => {
+        try {
+            const response = await axios.delete(
+                `/api/user/wishlist/${_id}`,
+                {headers:{
+                    authorization:encodedToken
+                }}
+            )
+            dispatch ({type:"REMOVE_FROM_WISHLIST",payload:response.data.wishlist})
+        }
+        catch(error) {
+            console.error(error)
+        }
+    }
+
     return (
     <div className="card card-vertical-container2 product-card">
             <img src={img} alt={title} className="card-img"/>
@@ -17,8 +69,24 @@ const ProductCard = ({productDetails}) => {
                 </div>
                 <h6>{productDesc}</h6>
                 <div className="card-btns align-center">
-                    <button className="btn btn-with-icon"><i className="p1-right fas fa-shopping-cart"></i>Add to cart</button>
-                    <button className="btn btn-icon1 card-icon-btn m-left-auto"><i className="far fa-heart"></i></button>
+                    {cart.find((cartItem)=>cartItem._id===productDetails._id)?
+                    <button className="btn btn-with-icon"><i className="p1-right fas fa-shopping-cart"></i>Already in cart</button>
+                    :<button onClick={() => addToCart(productDetails)} className="btn btn-with-icon"><i className="p1-right fas fa-shopping-cart"></i>Add to cart</button>
+                    
+                }
+                    
+                    {wishlist.find((wishlistItem)=>wishlistItem.id===productDetails.id)?
+                    <button 
+                    onClick={()=>removeFromWishlist(_id)}  
+                    className="wishlist-btn-clicked btn btn-icon1 card-icon-btn m-left-auto">
+                        <i className="fa-solid fa-heart"></i></button>
+                    :
+                    <button 
+                    onClick={()=>addToWishlist(productDetails)}  
+                    className="wishlist-btn-color btn btn-icon1 card-icon-btn m-left-auto">
+                        <i className="fa-solid fa-heart"></i></button>
+                    }
+
                 </div>
             </div> 
         </div>
