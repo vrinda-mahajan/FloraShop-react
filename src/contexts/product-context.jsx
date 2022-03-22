@@ -23,12 +23,14 @@ const ProductProvider = ({children}) => {
         ()=> {(async()=>{
             try {
                 const response = await axios.get(
-                    "/api/user/cart",
+                  "/api/user/cart",
                     {headers: {
                         authoriztaion : encodedToken
                     }}
                     )
-                dispatch({type:"SET_CART",payload:response.data.cart})
+            if (response===200){
+                dispatch({type:"CHANGE_CART",payload:response.data.cart})
+            }
             }catch (error) {
                 console.log(error)
             }

@@ -4,7 +4,6 @@ import { useProduct } from "../../../contexts/product-context"
 export const CartCard = ({cartItem}) => {
     const encodedToken = localStorage.getItem("token")
     const {dispatch} = useProduct()
-    console.log(cartItem.qty)
     const removeFromCart = async(_id) => {
         try {
             const response = await axios.delete(
@@ -13,7 +12,7 @@ export const CartCard = ({cartItem}) => {
                     authorization:encodedToken
                 }}
                 )
-            dispatch({type:"REMOVE_FROM_CART",payload:response.data.cart})
+            dispatch({type:"CHANGE_CART",payload:response.data.cart})
         } catch (error) {
             console.error(error)
         }
@@ -29,7 +28,7 @@ export const CartCard = ({cartItem}) => {
                     authorization:encodedToken
                     },
             })
-            dispatch({type:"ADD_TO_WISHLIST",payload:response.data.wishlist})
+            dispatch({type:"CHANGE_WISHLIST",payload:response.data.wishlist})
         } catch (error) {
             console.error(error)
         }
@@ -49,7 +48,7 @@ export const CartCard = ({cartItem}) => {
                             authorization:encodedToken
                     }}
                     )
-                dispatch({type:"INCREMENT_QTY",payload:response.data.cart})
+                dispatch({type:"CHANGE_QTY",payload:response.data.cart})
             } catch (error) {
                 console.log(error)
             }
@@ -66,7 +65,7 @@ export const CartCard = ({cartItem}) => {
                             authorization:encodedToken
                     }}
                     )
-                dispatch({type:"DECREMENT_QTY",payload:response.data.cart})
+                dispatch({type:"CHANGE_QTY",payload:response.data.cart})
             } catch (error) {
                 console.log(error)
             }

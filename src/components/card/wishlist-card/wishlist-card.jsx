@@ -15,7 +15,7 @@ const WishlistCard = ({wishlistItem}) => {
                     authorization:encodedToken
                 }}
             )
-            dispatch ({type:"REMOVE_FROM_WISHLIST",payload:response.data.wishlist})
+            dispatch ({type:"CHANGE_WISHLIST",payload:response.data.wishlist})
 
         }
         catch(error) {
@@ -33,7 +33,7 @@ const WishlistCard = ({wishlistItem}) => {
                         authorization:encodedToken
                     }
                 })
-            dispatch({type:"ADD_TO_CART",payload:response.data.cart})
+            dispatch({type:"CHANGE_CART",payload:response.data.cart})
         } catch (error) {
             console.error(error)
         }

@@ -46,25 +46,13 @@ export const productReducer = (state,action) => {
                 price:200,
                 rating:0,}
                 
-        case "SET_CART":
+        case "CHANGE_CART":
             return {...state,cart:action.payload}
 
-        case "ADD_TO_CART":
-            return {...state,cart:action.payload}
-        
-        case "REMOVE_FROM_CART":
-            return {...state,cart:action.payload}
-
-        case "ADD_TO_WISHLIST":
+        case "CHANGE_WISHLIST":
             return {...state,wishlist:action.payload}
 
-        case "REMOVE_FROM_WISHLIST":
-            return {...state,wishlist:action.payload}
-
-        case "INCREMENT_QTY":
-            return {...state,cart:action.payload}
-
-        case "DECREMENT_QTY":
+        case "CHANGE_QTY":
             return {...state,cart:action.payload}
             
         default:
