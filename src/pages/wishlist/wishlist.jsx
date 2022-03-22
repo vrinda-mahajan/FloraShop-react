@@ -9,13 +9,11 @@ const Wishlist = () => {
     const {wishlist} = useProduct();
     return (
         <>
-            <Navbar />
             <h4 className="wishlist-text">My Wishlist</h4>
             <h5  className="wishlist-text">{wishlist.length===0?`Wishlist is Empty!`:`Items: ${wishlist.length}`}</h5>
             <main className="wishlist-container flex-wrap">
                 {wishlist.map((wishlistItem)=><WishlistCard wishlistItem={wishlistItem} />)}
             </main>
-            <Footer />
         </>
     )
 }

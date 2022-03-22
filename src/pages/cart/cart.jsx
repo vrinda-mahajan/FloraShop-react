@@ -1,5 +1,4 @@
 import "./cart.css"
-import { Footer, Navbar } from "../../components"
 import { CartCard } from "../../components/card/cart-card/cart-card"
 import { useProduct } from "../../contexts/product-context";
 import { useDocumentTitle } from "../../custom-hooks/useDocumentTitle"
@@ -11,7 +10,6 @@ const Cart = () => {
     const {cart} = useProduct();
     return (
         <>
-        <Navbar />
         <h4 className="cart-text">My Cart</h4>
         <h5  className="cart-text">{cart.length===0?`Your cart is Empty!`:`Items: ${cart.length}`}</h5>
         <main className="flex-r cart-section">
@@ -20,7 +18,6 @@ const Cart = () => {
             </section>
             <PriceSection  />
         </main>
-        <Footer />
         </>
     )
 }
