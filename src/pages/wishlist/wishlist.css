@@ -1,0 +1,13 @@
+.wishlist-text {
+    text-align: center;
+    margin: 3rem 0;
+}
+.wishlist-container {
+    margin: 4rem;
+}
+.wishlist-btn-clicked {
+    color: red;
+}
+.wishlist-btn-color {
+    color: var(--grey-color);
+}

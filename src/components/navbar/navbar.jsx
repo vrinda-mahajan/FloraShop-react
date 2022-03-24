@@ -1,15 +1,18 @@
 import React from "react"
 import { Link } from "react-router-dom"
+import { useProduct } from "../../contexts/product-context"
 import "./navbar.css"
 
 export function Navbar () {
+    const {cart,wishlist} = useProduct()
     return(
         <nav className="nav-container align-center">
-  
-          <div className="p2 nav-logo flex-r">
-              <i className="app-icon fab fa-pagelines"></i>
-              <span className="app-name">FloraShop</span>
-          </div>
+          <Link className="text-decor-none" to="/">
+            <div className="p2 nav-logo flex-r">
+                <i className="app-icon fab fa-pagelines"></i>
+                <span className="app-name">FloraShop</span>
+            </div>
+          </Link>
   
           <div className="nav-link">
           <Link to="/"><button className="btn btn-link nav-btn">Home</button></Link>
@@ -26,7 +29,7 @@ export function Navbar () {
           <div className="flex-r nav-icons">
           <div className="flex-c center">
           <div className="m1 badge-container">
-              <Link to="/"><i className="nav-icon badge-icon fas fa-user"></i></Link>
+              <Link to="/signin"><i className="nav-icon badge-icon fas fa-user"></i></Link>
           </div>
           <span className="nav-icon-text">Account</span>
           </div>
@@ -34,7 +37,9 @@ export function Navbar () {
           <div className="flex-c center">
           <div className="m1 badge-container">
               <Link to="/wishlist"><i className="nav-icon badge-icon far fa-heart"></i></Link>
-              <span className="badge badge-right badge-sm">1</span>
+              {(wishlist.length!==0)?
+              <span className="badge badge-right badge-sm">{wishlist.length}</span>:<></>
+              }
           </div>
           <span className="nav-icon-text">Wishlist</span>
           </div>
@@ -42,7 +47,9 @@ export function Navbar () {
           <div className="flex-c center">
           <div className="m1 badge-container">
               <Link to="/cart"><i className="nav-icon badge-icon fas fa-shopping-cart"></i></Link>
-              <span className="badge badge-right badge-sm">1</span>
+              {(cart.length!==0)?
+              <span className="badge badge-right badge-sm">{cart.length}</span>:<></>
+                }
           </div>
           <span className="nav-icon-text">Cart</span>
           </div>

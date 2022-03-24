@@ -4,6 +4,8 @@ export const initialReducerData = {
     price:200,
     rating:0,
     productList:[],
+    cart:[],
+    wishlist:[],
 }
 
 export const productReducer = (state,action) => {
@@ -35,6 +37,7 @@ export const productReducer = (state,action) => {
                 case "Tools":
                     return {...state,category:{...state.category,Tools:!state.category.Tools}}
             }
+
         case "CLEAR_ALL_FILTERS":
             return {
                 ...state,
@@ -42,6 +45,16 @@ export const productReducer = (state,action) => {
                 category:{Plants:false,Planters:false,Fertilizers:false,Tools:false},
                 price:200,
                 rating:0,}
+                
+        case "CHANGE_CART":
+            return {...state,cart:action.payload}
+
+        case "CHANGE_WISHLIST":
+            return {...state,wishlist:action.payload}
+
+        case "CHANGE_QTY":
+            return {...state,cart:action.payload}
+            
         default:
             return state
     }
