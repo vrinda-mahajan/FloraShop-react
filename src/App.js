@@ -1,5 +1,5 @@
 import "./App.css";
-import { Cart, HomePage, ProductPage, Signin, Signup, Wishlist } from "./pages/index";
+import { Cart, HomePage, ProductPage, Profile, Signin, Signup, Wishlist} from "./pages/index";
 import { Routes, Route, useLocation } from "react-router-dom";
 
 // mockman-js
@@ -20,6 +20,7 @@ function App() {
         <Route path="/cart" element={<Cart/>} />
         <Route path="/signup" element={<Signup/>} />
         <Route path="/signin" element={<Signin/>} />
+        <Route path="/profile" element={<Profile />} />
         <Route path="/mockman-test" element={<Mockman />} />
       </Routes>
       {

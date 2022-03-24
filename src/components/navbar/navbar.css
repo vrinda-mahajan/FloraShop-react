@@ -29,6 +29,7 @@
     font-size: 1.5rem;
 }
 .nav-icon-text {
+    color: var(--text-color);
     font-size: 1.2rem;
     margin-top: -0.8rem;
 }

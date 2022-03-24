@@ -25,10 +25,10 @@ const ProductProvider = ({children}) => {
                 const response = await axios.get(
                   "/api/user/cart",
                     {headers: {
-                        authoriztaion : encodedToken
+                        authorizataion : encodedToken
                     }}
                     )
-            if (response===200){
+            if (response.status===200){
                 dispatch({type:"CHANGE_CART",payload:response.data.cart})
             }
             }catch (error) {

@@ -1,10 +1,12 @@
 import React from "react"
 import { Link } from "react-router-dom"
+import { useAuth } from "../../contexts/auth-context"
 import { useProduct } from "../../contexts/product-context"
 import "./navbar.css"
 
 export function Navbar () {
     const {cart,wishlist} = useProduct()
+    const {user} = useAuth()
     return(
         <nav className="nav-container align-center">
           <Link className="text-decor-none" to="/">
@@ -27,12 +29,19 @@ export function Navbar () {
           </div>
   
           <div className="flex-r nav-icons">
-          <div className="flex-c center">
-          <div className="m1 badge-container">
-              <Link to="/signin"><i className="nav-icon badge-icon fas fa-user"></i></Link>
+          {user?<div className="flex-c center">
+          <Link to="/profile" className="m1 badge-container">
+              <i className="nav-icon badge-icon fas fa-user"></i>
+          </Link>
+          <span className="nav-icon-text">{`Hi,${user.firstName}`}</span>
           </div>
+          :<div className="flex-c center">
+          <Link to="/signin" className="m1 badge-container">
+              <i className="nav-icon badge-icon fas fa-user"></i>
+          </Link>
           <span className="nav-icon-text">Account</span>
           </div>
+          }
   
           <div className="flex-c center">
           <div className="m1 badge-container">

@@ -1,4 +1,5 @@
 import axios from "axios";
+import { Link } from "react-router-dom";
 import { useProduct } from "../../../contexts/product-context";
 
 const ProductCard = ({productDetails}) => {
@@ -69,9 +70,22 @@ const ProductCard = ({productDetails}) => {
                 </div>
                 <h6>{productDesc}</h6>
                 <div className="card-btns align-center">
-                    {cart.find((cartItem)=>cartItem._id===productDetails._id)?
-                    <button className="btn btn-with-icon"><i className="p1-right fas fa-shopping-cart"></i>Already in cart</button>
-                    :<button onClick={() => addToCart(productDetails)} className="btn btn-with-icon"><i className="p1-right fas fa-shopping-cart"></i>Add to cart</button>
+                    {cart.find((cartItem)=>cartItem._id===productDetails._id)
+                    ?<button className="btn btn-with-icon">
+                        <i className="p1-right fas fa-shopping-cart"></i>
+                        Already in cart
+                    </button>
+                    :localStorage.token?
+                    <button onClick={() => addToCart(productDetails)} className="btn btn-with-icon">
+                        <i className="p1-right fas fa-shopping-cart"></i>
+                        Add to cart
+                    </button>:
+                    <Link to="/signin">
+                        <button onClick={() => addToCart(productDetails)} className="btn btn-with-icon">
+                            <i className="p1-right fas fa-shopping-cart"></i>
+                            Add to cart
+                        </button>
+                    </Link>
                     
                 }
                     

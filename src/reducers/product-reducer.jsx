@@ -54,7 +54,9 @@ export const productReducer = (state,action) => {
 
         case "CHANGE_QTY":
             return {...state,cart:action.payload}
-            
+        
+        case "LOGOUT":
+            return {...state,cart:[],wishlist:[]}
         default:
             return state
     }
