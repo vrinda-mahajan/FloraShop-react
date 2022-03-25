@@ -49,7 +49,7 @@ export const CartCard = ({cartItem}) => {
                     }}
                     )
                 if (response.status===200){
-                dispatch({type:"CHANGE_QTY",payload:response.data.cart})
+                dispatch({type:"CHANGE_CART",payload:response.data.cart})
                 }
             } catch (error) {
                 console.log(error)
@@ -67,7 +67,7 @@ export const CartCard = ({cartItem}) => {
                             authorization:encodedToken
                     }}
                     )
-                dispatch({type:"CHANGE_QTY",payload:response.data.cart})
+                dispatch({type:"CHANGE_CART",payload:response.data.cart})
             } catch (error) {
                 console.log(error)
             }

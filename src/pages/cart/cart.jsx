@@ -14,7 +14,7 @@ const Cart = () => {
         <h5  className="cart-text">{cart.length===0?`Your cart is Empty!`:`Items: ${cart.length}`}</h5>
         <main className="flex-r cart-section">
             <section className="cart-card-section">
-                {cart.map((cartItem)=><CartCard cartItem={cartItem} />)}
+                {cart.map((cartItem)=><CartCard key={cartItem._id} cartItem={cartItem} />)}
             </section>
             <PriceSection  />
         </main>

@@ -38,3 +38,16 @@
     background-color: var(--background-color);
     padding: 0;
 }
+.profile-details {
+    width: 40%;
+}
+.profile-section {
+    margin-top: 4rem;
+}
+.btn-logout {
+    margin: auto;
+}
+.two-feild-section {
+    gap: 1rem;
+    height: 8rem;
+}

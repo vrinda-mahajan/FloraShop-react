@@ -6,16 +6,16 @@
 }
 .app-name {
     color: var(--heading-color);
-    font-size: 3.2rem;
+    font-size: 3rem;
     font-family: 'Cormorant Garamond', serif;
 }
 .app-icon {
     color: var(--primary-color);
-    font-size: 4.2rem;
+    font-size: 4rem;
 }
 .nav-icon {
     color: var(--text-color);
-    font-size: 2.4rem;
+    font-size: 2.2rem;
 }
 .nav-icon:hover {
     color: var(--primary-color);
@@ -26,10 +26,9 @@
 }
 .nav-btn {
     margin: 0;
-    font-size: 1.5rem;
 }
 .nav-icon-text {
-    font-size: 1.2rem;
+    color: var(--text-color);
     margin-top: -0.8rem;
 }
 .nav-icons > div {
