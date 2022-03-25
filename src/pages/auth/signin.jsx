@@ -26,6 +26,11 @@ const Signin = () => {
     const guestLogin = () => {
         setFormDetails(()=>({email:"guestlogin1@gmail.com",password:"1234"}))
     }
+    const handleFormDetails = (e,detail) => {
+        setFormDetails((prev)=>(
+            {...prev,[detail]:e.target.value}
+        ))
+    }
     return (
         <main className="auth-section">
         <section className="login-section">
@@ -37,12 +42,12 @@ const Signin = () => {
     
             <div className="input-auth input-container">
                 <label className="input-label" htmlFor="email">Email</label>
-                <input onChange={(e) => setFormDetails(()=>({...formDetails,email:e.target.value})) } className="input-field auth-field" type="email" id="email" placeholder="Enter your email here" />
+                <input onChange={(e)=>{handleFormDetails(e,"email")}} className="input-field auth-field" type="email" id="email" placeholder="Enter your email here" />
             </div>
 
             <div className="input-auth input-container">
                 <label className="input-label" htmlFor="password">Password</label>
-                <input onChange={(e) => setFormDetails(()=>({...formDetails,password:e.target.value})) } className="input-field auth-field" type="password" id="password" placeholder="*******" />
+                <input onChange={(e)=>{handleFormDetails(e,"password")}} className="input-field auth-field" type="password" id="password" placeholder="*******" />
             </div>
 
             <div className="auth-footer">

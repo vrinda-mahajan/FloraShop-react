@@ -27,6 +27,11 @@ const Signup = () => {
             navigate("/")
         }
     }
+    const handleFormDetails = (e,detail) => {
+        setUserDetails((prev)=>(
+            {...prev,[detail]:e.target.value}
+        ))
+    }
 
     return (
         <main className="auth-section">
@@ -40,42 +45,27 @@ const Signup = () => {
 
                 <div className="input-auth input-container">
                     <label className="input-label" htmlFor="username">Firstname</label>
-                    <input onChange={
-                        (e)=>{setUserDetails((prev)=>(
-                            {...prev,firstName:e.target.value}
-                        ))}} className="input-field auth-field" required type="text" id="Firstname" placeholder="Firstname" />
+                    <input onChange={(e)=>{handleFormDetails(e,"firstName")}} className="input-field auth-field" required type="text" id="Firstname" placeholder="Firstname" />
                 </div>
 
                 <div className="input-auth input-container">
                     <label className="input-label" htmlFor="username">Lastname</label>
-                    <input onChange={
-                        (e)=>{setUserDetails((prev)=>(
-                            {...prev,lastName:e.target.value}
-                        ))}} className="input-field auth-field" type="text" id="Lastname" placeholder="Lastname" />
+                    <input onChange={(e)=>{handleFormDetails(e,"lastName")}} className="input-field auth-field" type="text" id="Lastname" placeholder="Lastname" />
                 </div>
 
                 <div className="input-auth input-container">
                     <label className="input-label" htmlFor="signup-email">Email</label>
-                    <input onChange={
-                        (e)=>{setUserDetails((prev)=>(
-                            {...prev,email:e.target.value}
-                        ))}} className="input-field auth-field" required type="email" id="signup-email" placeholder="Enter your email here" />
+                    <input onChange={(e)=>{handleFormDetails(e,"email")}} className="input-field auth-field" required type="email" id="signup-email" placeholder="Enter your email here" />
                 </div>
 
                 <div className="input-auth input-container">
                     <label className="input-label" htmlFor="signup-password">Password</label>
-                    <input onChange={
-                        (e)=>{setUserDetails((prev)=>(
-                            {...prev,password:e.target.value}
-                        ))}} className="input-field auth-field" required type={showPassword?"text":"password"} id="signup-password" placeholder="*******" />
+                    <input onChange={(e)=>{handleFormDetails(e,"password")}} className="input-field auth-field" required type={showPassword?"text":"password"} id="signup-password" placeholder="*******" />
                 </div>
 
                 <div className="input-auth input-container">
-                    <label className="input-label" htmlFor="signup-password">Confirm Password</label>
-                    <input onChange={
-                        (e)=>{setUserDetails((prev)=>(
-                            {...prev,confirmPassword:e.target.value}
-                        ))}} className="input-field auth-field" required type={showPassword?"text":"password"} id="signup-password" placeholder="*******" />
+                    <label className="input-label" htmlFor="signup-confirm-password">Confirm Password</label>
+                    <input onChange={(e)=>{handleFormDetails(e,"confirmPassword")}} className="input-field auth-field" required type={showPassword?"text":"password"} id="signup-password" placeholder="*******" />
                 </div>
 
                 <input onChange={()=>setShowPassword((prev)=>!prev)} className="checkbox-input" type="checkbox" /> 

@@ -5,7 +5,6 @@ import { initialReducerData, productReducer } from "../reducers/product-reducer"
 const ProductContext = createContext()
 
 const ProductProvider = ({children}) => {
-   const encodedToken = localStorage.getItem("token")
     const [state,dispatch] = useReducer(productReducer,initialReducerData)
     useEffect(
         ()=>(async() => {
@@ -19,24 +18,6 @@ const ProductProvider = ({children}) => {
     })()
     , [])
 
-    useEffect(
-        ()=> {(async()=>{
-            try {
-                const response = await axios.get(
-                  "/api/user/cart",
-                    {headers: {
-                        authorizataion : encodedToken
-                    }}
-                    )
-            if (response.status===200){
-                dispatch({type:"CHANGE_CART",payload:response.data.cart})
-            }
-            }catch (error) {
-                console.log(error)
-            }
-        })()
-    },[encodedToken])
-    
     const value = {
         sortBy:state.sortBy,
         category:state.category,

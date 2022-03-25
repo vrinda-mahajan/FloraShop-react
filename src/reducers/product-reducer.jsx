@@ -51,12 +51,10 @@ export const productReducer = (state,action) => {
 
         case "CHANGE_WISHLIST":
             return {...state,wishlist:action.payload}
-
-        case "CHANGE_QTY":
-            return {...state,cart:action.payload}
         
         case "LOGOUT":
             return {...state,cart:[],wishlist:[]}
+            
         default:
             return state
     }
