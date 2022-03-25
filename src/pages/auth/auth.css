@@ -47,3 +47,7 @@
 .btn-logout {
     margin: auto;
 }
+.two-feild-section {
+    gap: 1rem;
+    height: 8rem;
+}

@@ -43,14 +43,16 @@ const Signup = () => {
                     <img className="responsive-img auth-img" src={authImg} alt="authentication" />
                 </div>
 
-                <div className="input-auth input-container">
-                    <label className="input-label" htmlFor="username">Firstname</label>
-                    <input onChange={(e)=>{handleFormDetails(e,"firstName")}} className="input-field auth-field" required type="text" id="Firstname" placeholder="Firstname" />
-                </div>
+                <div className="flex-r two-feild-section">
+                    <div className="input-auth input-container">
+                        <label className="input-label" htmlFor="username">Firstname</label>
+                        <input onChange={(e)=>{handleFormDetails(e,"firstName")}} className="input-field auth-field" required type="text" id="Firstname" placeholder="Firstname" />
+                    </div>
 
-                <div className="input-auth input-container">
-                    <label className="input-label" htmlFor="username">Lastname</label>
-                    <input onChange={(e)=>{handleFormDetails(e,"lastName")}} className="input-field auth-field" type="text" id="Lastname" placeholder="Lastname" />
+                    <div className="input-auth input-container">
+                        <label className="input-label" htmlFor="username">Lastname</label>
+                        <input onChange={(e)=>{handleFormDetails(e,"lastName")}} className="input-field auth-field" type="text" id="Lastname" placeholder="Lastname" />
+                    </div>
                 </div>
 
                 <div className="input-auth input-container">
