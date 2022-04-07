@@ -48,7 +48,7 @@ FloraShop is an e-commerce website build for plant lovers, Get amazing offers fo
 ---
 ## 🔌 Getting Started
 
-- clone the repository on your local machine with the command below in your terminal, and cd into the **Video-Library** folder
+- clone the repository on your local machine with the command below in your terminal, and cd into the **FloraShop-react** folder
 
 ```
 git clone https://github.com/vrinda-mahajan/FloraShop-react
