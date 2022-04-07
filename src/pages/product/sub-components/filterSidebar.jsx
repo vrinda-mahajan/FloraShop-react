@@ -36,7 +36,7 @@ const FilterSidebar = () => {
         <form>
             {categories.map(({_id,categoryName})=>
                 <div key={_id}>
-                <input onChange={()=>dispatch({type:"SORT_BY_CATEGORY",payload:categoryName})} checked={category[categoryName]} id={categoryName} type="checkbox"/>
+                <input onChange={()=>dispatch({type:"SORT_BY_CATEGORY",payload:categoryName})} checked={category.includes(categoryName)} id={categoryName} type="checkbox"/>
                 <label htmlFor={categoryName}>{categoryName}</label><br/>
                 </div>
             )}
