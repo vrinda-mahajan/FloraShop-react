@@ -6,7 +6,7 @@ const AuthContext = createContext();
 
 export const AuthProvider = ({children}) => {
     const userInLocalStorage = JSON.parse(localStorage.getItem("user"))
-    const tokenInLocalStorage = JSON.parse(localStorage.getItem("token"))
+    const tokenInLocalStorage = localStorage.getItem("token")
     const [user,setUser] = useState(userInLocalStorage?.user)
     const [token,setToken] = useState(tokenInLocalStorage?.token)
 
@@ -20,7 +20,7 @@ export const AuthProvider = ({children}) => {
                 }
             )
             if (response.status===200){
-                localStorage.setItem("token",JSON.stringify({token:response.data.encodedToken}))
+                localStorage.setItem("token",response.data.encodedToken)
                 localStorage.setItem("user",JSON.stringify({user:response.data.foundUser}))
                 setToken(response.data.encodedToken)
                 setUser(response.data.foundUser)
@@ -43,7 +43,7 @@ export const AuthProvider = ({children}) => {
                 }
             )
             if (response.status===201){
-                localStorage.setItem("token",JSON.stringify({token:response.data.encodedToken}))
+                localStorage.setItem("token",response.data.encodedToken)
                 localStorage.setItem("user",JSON.stringify({user:response.data.createdUser}))
                 setToken(response.data.encodedToken)
                 setUser(response.data.createdUser)

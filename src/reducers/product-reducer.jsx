@@ -1,6 +1,6 @@
 export const initialReducerData = {
     sortBy:"",
-    category:{Plants:false,Planters:false,Fertilizers:false,Tools:false},
+    category:[],
     price:200,
     rating:0,
     productList:[],
@@ -27,22 +27,15 @@ export const productReducer = (state,action) => {
             }
 
         case "SORT_BY_CATEGORY":
-            switch (action.payload) {
-                case "Plants":
-                    return {...state,category:{...state.category,Plants:!state.category.Plants}}
-                case "Planters":
-                    return {...state,category:{...state.category,Planters:!state.category.Planters}}
-                case "Fertilizers":
-                    return {...state,category:{...state.category,Fertilizers:!state.category.Fertilizers}}
-                case "Tools":
-                    return {...state,category:{...state.category,Tools:!state.category.Tools}}
-            }
+        return state.category.includes(action.payload)
+        ? { ...state,category: state.category.filter((item) => item !== action.payload) }
+        : { ...state, category: [...state.category, action.payload] }
 
         case "CLEAR_ALL_FILTERS":
             return {
                 ...state,
                 sortBy:"",
-                category:{Plants:false,Planters:false,Fertilizers:false,Tools:false},
+                category:[],
                 price:200,
                 rating:0,}
                 
