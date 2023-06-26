@@ -25,6 +25,7 @@ export const productReducer = (state,action) => {
             if (action.payload==="HIGH_TO_LOW"){
                 return{...state,sortBy:action.payload}
             }
+            break
 
         case "SORT_BY_CATEGORY":
         return state.category.includes(action.payload)
