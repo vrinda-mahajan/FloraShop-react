@@ -2,7 +2,7 @@ import { useProduct } from "../contexts/product-context"
 
 export const useFilteredProducts = (products) => {
     let productList = [...products]
-    const {sortBy,category,price,rating} = useProduct()
+    const {sortBy,category,price,rating,searchText} = useProduct()
 
     if (category.length !== 0) 
         productList = productList.filter((item) => category.includes(item.categoryName));
@@ -12,7 +12,11 @@ export const useFilteredProducts = (products) => {
         productList = productList.sort ((item1,item2)=>item2.price-item1.price);
     if (price>200) 
         productList = productList.filter((item) => item.price <= price);
-    
+    if (searchText.length !== 0) {
+        productList = productList.filter((item) =>
+            item.title.toLowerCase().includes(searchText.toLowerCase())
+        );
+    }
     productList = productList.filter((item)=>item.rating >= rating)
 
     return [...productList]

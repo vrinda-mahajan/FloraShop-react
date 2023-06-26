@@ -26,6 +26,7 @@ const ProductProvider = ({children}) => {
         productList:state.productList,
         cart:state.cart,
         wishlist:state.wishlist,
+        searchText: state.searchText,
         dispatch:dispatch
     }
     return (
