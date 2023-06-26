@@ -1,6 +1,9 @@
+#categories{
+    padding-top: 8rem;
+}
 .featured-text {
     text-align: center;
-    margin: 5rem 0;
+    margin: 2rem 0;
 }
 .featured-products >div {
     position: relative;

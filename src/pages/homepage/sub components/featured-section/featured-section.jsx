@@ -6,7 +6,7 @@ export function FeatureSection () {
   const {categories} = useCategoryContext();
   
     return (
-        <section id="featured-prod-section">
+        <section id="categories">
           <h3 className="featured-text">Our Featured</h3>
           <div className="center flex-wrap featured-products">
             {categories.map(({_id,categoryName,img})=>{

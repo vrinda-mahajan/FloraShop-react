@@ -1,18 +1,71 @@
-import React from "react"
-export function BestSellerCard ({img,name,availability,price}) {
-    return (
-        <div className="m1 card card-vertical-container1">
-              <img src={img} alt="Fiddle Leaf fig" className="card-img" />
-              <div className="p1 card-text-container">
-                      <h5 className="card-header">{name}</h5>
-                      <div className="card-info">{availability}</div>
-                      <div className="align-center">
-                          <p className="card-price">Rs. {price}</p>
-                          <button className="best-seller-icon btn btn-icon1 card-icon-btn">
-                              <i className="far fa-heart"></i>
-                          </button>
-                      </div>  
-              </div>
-          </div>
-    )
+import React from "react";
+import axios from "axios";
+import { useProduct } from "../../../contexts/product-context";
+
+export function BestSellerCard({ productDetails }) {
+  const { _id, img, title, inStock, price } = productDetails;
+  const { dispatch, wishlist } = useProduct();
+  const encodedToken = localStorage.getItem("token");
+
+  const addToWishlist = async (productDetails) => {
+    try {
+      const response = await axios.post(
+        "/api/user/wishlist",
+        { product: productDetails },
+        {
+          headers: {
+            authorization: encodedToken,
+          },
+        }
+      );
+      dispatch({ type: "CHANGE_WISHLIST", payload: response.data.wishlist });
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  const removeFromWishlist = async (_id) => {
+    try {
+      const response = await axios.delete(`/api/user/wishlist/${_id}`, {
+        headers: {
+          authorization: encodedToken,
+        },
+      });
+      dispatch({ type: "CHANGE_WISHLIST", payload: response.data.wishlist });
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  return (
+    <div className="m1 card card-vertical-container1">
+      <img src={img} alt={title} className="card-img" />
+      <div className="p1 card-text-container">
+        <h5 className="card-header">{title}</h5>
+        <div className="card-info">
+          {inStock ? "Stock Available" : "Out of Stock"}
+        </div>
+        <div className="align-center">
+          <p className="card-price">Rs. {price}</p>
+          {wishlist.find(
+            (wishlistItem) => wishlistItem.id === productDetails.id
+          ) ? (
+            <button
+              onClick={() => removeFromWishlist(_id)}
+              className="wishlist-btn-clicked btn btn-icon2 card-icon-btn m-left-auto"
+            >
+              <i className="fa-solid fa-heart"></i>
+            </button>
+          ) : (
+            <button
+              onClick={() => addToWishlist(productDetails)}
+              className="best-seller-icon btn btn-icon2 card-icon-btn"
+            >
+              <i className="far fa-heart"></i>
+            </button>
+          )}
+        </div>
+      </div>
+    </div>
+  );
 }

@@ -1,19 +1,27 @@
-import "./best-seller-section.css"
-import {BestSellerCard} from "../../../../components/index.js"
-import { bestSeller } from "../../../../data/best-seller-data"
+import "./best-seller-section.css";
+import { BestSellerCard } from "../../../../components/index.js";
+import { useProduct } from "../../../../contexts/product-context";
 
-export function BestSellerSection () {
-    return (
-        <section className="best-seller-section">
-          <div className="best-seller-text">
-              <h3 className="p1">Top best seller Products</h3>
-              <p>Find what others are having on their garden</p>
-          </div>
-           <div className="flex-r best-seller-cards">
-            {bestSeller.map(({_id,img,name,availability,price})=>{
-                return <BestSellerCard key={_id} img={img} name={name} availability={availability} price={price} />
-            })}
-          </div> 
-        </section>
-    )
+export function BestSellerSection() {
+  const { productList } = useProduct();
+  return (
+    <section id="best-sellers" className="best-seller-section">
+      <div className="best-seller-text">
+        <h3 className="p1">Top best seller Products</h3>
+        <p>Find what others are having on their garden</p>
+      </div>
+      <div className="flex-r best-seller-cards">
+        {productList
+          .filter((product) => product.rating >= 4.5)
+          .map((productDetails) => {
+            return (
+              <BestSellerCard
+                key={productDetails._id}
+                productDetails={productDetails}
+              />
+            );
+          })}
+      </div>
+    </section>
+  );
 }

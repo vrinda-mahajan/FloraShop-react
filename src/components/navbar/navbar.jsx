@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../../contexts/auth-context";
 import { useProduct } from "../../contexts/product-context";
@@ -35,14 +35,14 @@ export function Navbar() {
         <Link to="/">
           <button className="btn btn-link nav-btn">Home</button>
         </Link>
-        <Link to="">
-          <button className="btn btn-link nav-btn">Catalouges</button>
-        </Link>
-        <Link to="">
-          <button className="btn btn-link nav-btn">Garden Guide</button>
-        </Link>
-        <Link to="">
-          <button className="btn btn-link nav-btn">About us</button>
+        <a href="/#best-sellers">
+          <button className="btn btn-link nav-btn">Best sellers</button>
+        </a>
+        <a href="/#categories">
+          <button className="btn btn-link nav-btn">Categories</button>
+        </a>
+        <Link to="/product">
+          <button className="btn btn-link nav-btn">Products</button>
         </Link>
       </div>
 
