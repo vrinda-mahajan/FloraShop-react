@@ -1,6 +1,7 @@
 import React from "react";
 import axios from "axios";
 import { useProduct } from "../../../contexts/product-context";
+import { Link } from "react-router-dom";
 
 export function BestSellerCard({ productDetails }) {
   const { _id, img, title, inStock, price } = productDetails;
@@ -56,13 +57,20 @@ export function BestSellerCard({ productDetails }) {
             >
               <i className="fa-solid fa-heart"></i>
             </button>
-          ) : (
+          ) : localStorage.token ? (
             <button
               onClick={() => addToWishlist(productDetails)}
               className="best-seller-icon btn btn-icon2 card-icon-btn"
             >
               <i className="far fa-heart"></i>
             </button>
+          ) : (
+            <Link
+              to="/signin"
+              className="best-seller-icon btn btn-icon2 card-icon-btn m-left-auto"
+            >
+              <i className="far fa-heart"></i>
+            </Link>
           )}
         </div>
       </div>
