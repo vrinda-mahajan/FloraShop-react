@@ -55,6 +55,7 @@ const ProductCard = ({ productDetails }) => {
   };
 
   return (
+        <Link style={{textDecoration:"none",color:"inherit"}} to={`/productDetails/${_id}`}>
     <div className="card card-vertical-container2 product-card">
       <img src={img} alt={title} className="card-img" />
       <div className="p1 card-text-container">
@@ -118,6 +119,7 @@ const ProductCard = ({ productDetails }) => {
         </div>
       </div>
     </div>
+      </Link>
   );
 };
 
