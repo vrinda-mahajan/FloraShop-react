@@ -55,7 +55,7 @@ const WishlistCard = ({wishlistItem}) => {
                     </div>
                     <p className="card-price m-left-auto">Rs. {price}</p>
                 </div>
-                <h6>{productDesc}</h6>
+                <h6 className="card-desc text-xsm text-light-weight">{productDesc}</h6>
                 <div className="card-btns">
                     <button onClick={()=>addToCart(wishlistItem)} className="btn btn-with-icon">
                         <i className="p1-right fas fa-shopping-cart"></i>Add to cart

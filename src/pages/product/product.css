@@ -91,7 +91,7 @@ input[type="checkbox"] {
   margin-bottom: 2rem;
   width: 21rem;
 }
-.product-card > img {
+.product-card> a > img {
   width: 21rem;
   height: 18rem;
   object-fit: cover;
@@ -101,4 +101,13 @@ input[type="checkbox"] {
 }
 .card-btns {
   padding-top: 2rem;
+}
+.cart-btn{
+    padding: 1rem;
+}
+.card-desc{
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
 }

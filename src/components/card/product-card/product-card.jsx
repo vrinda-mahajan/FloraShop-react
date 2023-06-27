@@ -55,8 +55,8 @@ const ProductCard = ({ productDetails }) => {
   };
 
   return (
+      <div className="card card-vertical-container2 product-card">
         <Link style={{textDecoration:"none",color:"inherit"}} to={`/productDetails/${_id}`}>
-    <div className="card card-vertical-container2 product-card">
       <img src={img} alt={title} className="card-img" />
       <div className="p1 card-text-container">
         <div className="card-heading flex-r">
@@ -72,17 +72,19 @@ const ProductCard = ({ productDetails }) => {
         <div className="card-info">
           {inStock ? "Stock available" : "Stock Unavailable"}
         </div>
-        <h6 className="text-xsm text-light-weight">{productDesc}</h6>
-        <div className="card-btns align-center">
+        <h6 className="text-xsm text-light-weight card-desc">{productDesc}</h6>
+        </div>
+      </Link>
+        <div className="p1 card-btns align-center">
           {cart.find((cartItem) => cartItem._id === productDetails._id) ? (
-            <button className="btn btn-with-icon">
+            <button className="btn btn-with-icon text-xsm cart-btn">
               <i className="p1-right fas fa-shopping-cart"></i>
               Already in cart
             </button>
           ) : localStorage.token ? (
             <button
               onClick={() => addToCart(productDetails)}
-              className="btn btn-with-icon"
+              className="btn btn-with-icon cart-btn"
             >
               <i className="p1-right fas fa-shopping-cart"></i>
               Add to cart
@@ -91,7 +93,7 @@ const ProductCard = ({ productDetails }) => {
             <Link to="/signin">
               <button
                 onClick={() => addToCart(productDetails)}
-                className="btn btn-with-icon"
+                className="btn btn-with-icon cart-btn"
               >
                 <i className="p1-right fas fa-shopping-cart"></i>
                 Add to cart
@@ -118,8 +120,7 @@ const ProductCard = ({ productDetails }) => {
           )}
         </div>
       </div>
-    </div>
-      </Link>
+    // </div>
   );
 };
 

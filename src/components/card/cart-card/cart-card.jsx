@@ -84,7 +84,7 @@ export const CartCard = ({cartItem}) => {
                     <div className="rating-badge align-center"> 
                             {rating}<i className="rating-badge-star fa-solid fa-star"></i> | 10
                     </div>
-                    <p>{productDesc}</p>
+                    <p className="card-desc">{productDesc}</p>
                         <div className="align-center">
                             <h6>Quantity :</h6>
                             {qty===1?<></>:
