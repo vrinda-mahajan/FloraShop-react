@@ -11,3 +11,7 @@
 .wishlist-btn-color {
     color: var(--grey-color);
 }
+.empty-item-img{
+    width: 20rem;
+    height: 20rem;
+}

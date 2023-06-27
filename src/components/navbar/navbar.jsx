@@ -7,6 +7,7 @@ import "./navbar.css";
 export function Navbar() {
   const { cart, wishlist, dispatch } = useProduct();
   const { user } = useAuth();
+  const encodedToken = localStorage.getItem("token");
 
   let timer = useRef();
   const [input, setInput] = useState("");
@@ -75,7 +76,7 @@ export function Navbar() {
 
         <div className="flex-c center">
           <div className="m1 badge-container">
-            <Link to="/wishlist">
+            <Link to={encodedToken ? "/wishlist" : "/signin"}>
               <i className="nav-icon badge-icon far fa-heart"></i>
             </Link>
             {wishlist.length !== 0 ? (
@@ -91,7 +92,7 @@ export function Navbar() {
 
         <div className="flex-c center">
           <div className="m1 badge-container">
-            <Link to="/cart">
+            <Link to={encodedToken ? "/cart" : "/signin"}>
               <i className="nav-icon badge-icon fas fa-shopping-cart"></i>
             </Link>
             {cart.length !== 0 ? (
