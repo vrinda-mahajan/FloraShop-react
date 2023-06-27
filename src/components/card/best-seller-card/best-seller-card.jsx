@@ -53,14 +53,14 @@ export function BestSellerCard({ productDetails }) {
           ) ? (
             <button
               onClick={() => removeFromWishlist(_id)}
-              className="wishlist-btn-clicked btn btn-icon2 card-icon-btn m-left-auto"
+              className="wishlist-btn-clicked btn btn-icon2 m-left-auto best-seller-icon"
             >
               <i className="fa-solid fa-heart"></i>
             </button>
           ) : localStorage.token ? (
             <button
               onClick={() => addToWishlist(productDetails)}
-              className="best-seller-icon btn btn-icon2 card-icon-btn"
+              className=" btn btn-icon2 card-icon-btn best-seller-icon"
             >
               <i className="far fa-heart"></i>
             </button>

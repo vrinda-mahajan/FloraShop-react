@@ -15,3 +15,6 @@
 .best-seller-icon {
     margin-left: auto;
 }
+.best-seller-icon>i:hover {
+    color: var(--error-color);
+}
