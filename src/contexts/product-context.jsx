@@ -1,16 +1,18 @@
 import axios from "axios";
-import { createContext, useContext, useEffect, useReducer } from "react";
+import { createContext, useContext, useEffect, useReducer, useState } from "react";
 import { initialReducerData, productReducer } from "../reducers/product-reducer";
 
 const ProductContext = createContext()
 
 const ProductProvider = ({children}) => {
     const [state,dispatch] = useReducer(productReducer,initialReducerData)
+    const [isLoading,setIsLoading] = useState(true);
     useEffect(
         ()=>(async() => {
         try {
             const {data:productList} = await axios.get("/api/products")
             dispatch({type:"SET_PRODUCTS",payload:productList.products})
+            setIsLoading(false);
         } 
         catch (error) {
             console.error(error)
@@ -27,6 +29,7 @@ const ProductProvider = ({children}) => {
         cart:state.cart,
         wishlist:state.wishlist,
         searchText: state.searchText,
+        isLoading:isLoading,
         dispatch:dispatch
     }
     return (

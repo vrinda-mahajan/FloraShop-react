@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import "./productDetails.css";
 import axios from "axios";
 import { useProduct } from "../../contexts/product-context";
+import { Loader } from "../../components";
 
 const ProductDetails = () => {
   const { id: productId } = useParams();
@@ -74,7 +75,7 @@ const ProductDetails = () => {
   };
 
   return isLoading ? (
-    <>Loading...</>
+    <Loader />
   ) : (
     <div className="product-details-card">
       <div className="product-details-card-img-container">
